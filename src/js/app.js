@@ -5,7 +5,7 @@ import jQuery from 'jquery';
 window.$ = $;
 window.jQuery = jQuery;
 
-import '../sass/main.scss';
+//import '../sass/main.scss';
 
 let slider = new Slider(
     {

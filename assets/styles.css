@@ -1,2 +1,44 @@
+@keyframes slider {
+  0% {
+    left: 0;
+  }
+
+  20% {
+    left: -100%;
+  }
+
+  40% {
+    left: -200%;
+  }
+
+  60% {
+    left: -300%;
+  }
+
+  85% {
+    left: -400%;
+  }
+}
+
+.slider {
+  margin: auto;
+  overflow: hidden;
+  width: 600px;
+  height: 400px;
+  display: block;
+  position: relative;
+}
+
+.slider img {
+  width: 600px;
+  position: absolute;
+  left: 0;
+}
+
+.wrap {
+  position: relative;
+  height: 400px;
+}
+
 
 /*# sourceMappingURL=styles.css.map*/

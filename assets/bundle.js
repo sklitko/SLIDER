@@ -66,7 +66,7 @@ var bundle =
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8c1d39179213d5744f74"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "140dcec38bcee59dfb46"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -600,14 +600,14 @@ var bundle =
 	window.$ = _jquery2.default;
 	window.jQuery = _jquery2.default;
 
-	var slider = new _Slider2.default({
-	    type: "slide", //"slide" или "fadeIn",
-	    speed: 100,
-	    delay: 1000,
-	    images: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg']
-	});
+	//import '../sass/main.scss';
 
-		//slider.drowIn();
+	var slider = new _Slider2.default({
+	    type: "fadeIn", //"slide" или "fadeIn",
+	    speed: 5000,
+	    delay: 2000,
+	    images: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg']
+		});
 
 /***/ },
 /* 1 */
@@ -626,21 +626,28 @@ var bundle =
 
 	    _classCallCheck(this, Slider);
 
-	    this.type = param.type;
-	    this.speed = param.speed;
+	    this.type = param.type || 'slide';
+	    this.speed = param.speed / 1000;
 	    this.delay = param.delay;
 	    this.images = param.images;
 
 	    this.initialize();
+
+	    if (this.type == 'slide') {
+	        this.slide(this.delay, this.speed);
+	    } else {
+	        this.fadeIn(this.delay, this.speed);
+	    }
 	};
 
 	Slider.prototype.initialize = function () {
 	    var region = document.querySelector('body');
 	    var div = document.createElement('div');
-	    div.className = 'slider owl-carousel';
+	    var wrap = document.createElement('div');
+	    div.className = 'slider';
+	    wrap.className = 'wrap';
 	    region.appendChild(div);
-
-	    this.$element = $(div);
+	    div.appendChild(wrap);
 	    var _iteratorNormalCompletion = true;
 	    var _didIteratorError = false;
 	    var _iteratorError = undefined;
@@ -649,12 +656,10 @@ var bundle =
 	        for (var _iterator = this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	            var image = _step.value;
 
-	            var div2 = document.createElement('div');
-	            div2.className = 'item';
 	            var DOM_img = document.createElement("img");
 	            DOM_img.src = image;
-	            div.appendChild(div2);
-	            div2.appendChild(DOM_img);
+	            wrap.appendChild(DOM_img);
+	            $(DOM_img).css({ "visibility": "hidden" });
 	        }
 	    } catch (err) {
 	        _didIteratorError = true;
@@ -670,10 +675,75 @@ var bundle =
 	            }
 	        }
 	    }
-
-	    console.log('tssssst');
 	};
-	exports.default = Slider;
+
+	Slider.prototype.slide = function (interval, duration) {
+	    var i = 0;
+	    // setInterval(function () {
+	    //     let slidersAmount = $('.wrap').children().length;
+	    //     $($('.wrap').children()[i]).removeClass().addClass('animated fadeOutLeft').css({
+	    //         '-webkit-animation-duration': duration + 's',
+	    //         'visibility': 'visible'
+	    //     });
+	    //     $($('.wrap').children()[i + 1]).removeClass().addClass('animated fadeInRight').css({
+	    //         '-webkit-animation-duration': duration + 's',
+	    //         'visibility': 'visible'
+	    //     });
+	    //     if (i < slidersAmount - 1) {
+	    //         ++i
+	    //     } else {
+	    //         i = 0;
+	    //         $($('.wrap').children()[i]).removeClass().addClass('animated fadeInRight').css({'-webkit-animation-duration': duration + 's'});
+	    //     }
+	    // }, interval);
+
+	    var time = duration * 1000 + interval;
+	    var timerId = setTimeout(function slide() {
+	        var $wrap = $('.wrap');
+	        var slidersAmount = wrap.children().length;
+	        $($wrap.children()[i]).removeClass().addClass('animated').addClass('fadeOutLeft').css({
+	            '-webkit-animation-duration': duration + 's',
+	            'visibility': 'visible'
+	        });
+	        $($wrap.children()[i + 1]).removeClass().addClass('animated fadeInRight').css({
+	            '-webkit-animation-duration': duration + 's',
+	            'visibility': 'visible'
+	        });
+	        if (i < slidersAmount - 1) {
+	            i++;
+	        } else {
+	            i = 0;
+	            $($wrap.children()[i]).removeClass().addClass('animated fadeInRight').css({ '-webkit-animation-duration': duration + 's' });
+	        }
+	        timerId = setTimeout(slide, time);
+	    }, 1000);
+	};
+
+	Slider.prototype.fadeIn = function (interval, duration) {
+	    var i = 0;
+	    var time = duration * 1000 + interval;
+	    var timerId = setTimeout(function slide() {
+	        var $wrap = $('.wrap');
+	        var slidersAmount = $wrap.children().length;
+	        $($wrap.children()[i]).removeClass().addClass('animated').addClass('fadeOut').css({
+	            '-webkit-animation-duration': duration + 's',
+	            'visibility': 'visible'
+	        });
+	        $($wrap.children()[i + 1]).removeClass().addClass('animated fadeIn').css({
+	            '-webkit-animation-duration': duration + 's',
+	            'visibility': 'visible'
+	        });
+	        if (i < slidersAmount - 1) {
+	            i++;
+	        } else {
+	            i = 0;
+	            $($wrap.children()[i]).removeClass().addClass('animated fadeIn').css({ '-webkit-animation-duration': duration + 's' });
+	        }
+	        timerId = setTimeout(slide, time);
+	    }, 1000);
+	};
+
+		exports.default = Slider;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ },
