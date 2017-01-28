@@ -1,0 +1,50 @@
+
+@keyframes slider {
+  0% {
+    left: 0;
+  }
+  20% {
+    left: -100%;
+  }
+  40% {
+    left: -200%;
+  }
+  60% {
+    left: -300%;
+  }
+  85% {
+    left: -400%;
+  }
+  //100% {
+  //  left: -500%;
+  //}
+}
+
+.slider {
+  margin: auto;
+  overflow: hidden;
+  width: 600px;
+  height: 400px;
+  display: block;
+  position: relative;
+}
+
+.slider img {
+  width: 600px;
+ // float: left;
+  position: absolute;
+  left: 0;
+}
+
+.wrap {
+  //width: 500%;
+  position: relative;
+  height: 400px;
+}
+
+.wrap {
+  //animation: slider infinite;
+  //animation-duration: 35s;
+  ////animation-delay: 35s;
+  //animation-timing-function: linear;
+}
