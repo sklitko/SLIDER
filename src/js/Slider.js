@@ -18,18 +18,13 @@ class Slider {
 
 
 Slider.prototype.initialize = function () {
-    let region = document.querySelector('body');
-    let div = document.createElement('div');
-    let wrap = document.createElement('div');
-    div.className = 'slider';
-    wrap.className = 'wrap';
-    region.appendChild(div);
-    div.appendChild(wrap);
+
+    $('body').append('<div class="slider">');
+    $('.slider').append('<div class="wrap">');
+
     for (let image of this.images) {
-        let DOM_img = document.createElement("img");
-        DOM_img.src = image;
-        wrap.appendChild(DOM_img);
-        $(DOM_img).css({"visibility": "hidden"})
+        $('.wrap').append('<img src='+image+'>');
+        $('img').css({"visibility": "hidden"});
     }
 };
 

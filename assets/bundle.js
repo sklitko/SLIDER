@@ -66,7 +66,7 @@ var bundle =
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e892335f73cd7d5903b1"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1ccd30fba738dbf05d8d"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -641,13 +641,10 @@ var bundle =
 	};
 
 	Slider.prototype.initialize = function () {
-	    var region = document.querySelector('body');
-	    var div = document.createElement('div');
-	    var wrap = document.createElement('div');
-	    div.className = 'slider';
-	    wrap.className = 'wrap';
-	    region.appendChild(div);
-	    div.appendChild(wrap);
+
+	    $('body').append('<div class="slider">');
+	    $('.slider').append('<div class="wrap">');
+
 	    var _iteratorNormalCompletion = true;
 	    var _didIteratorError = false;
 	    var _iteratorError = undefined;
@@ -656,10 +653,8 @@ var bundle =
 	        for (var _iterator = this.images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	            var image = _step.value;
 
-	            var DOM_img = document.createElement("img");
-	            DOM_img.src = image;
-	            wrap.appendChild(DOM_img);
-	            $(DOM_img).css({ "visibility": "hidden" });
+	            $('.wrap').append('<img src=' + image + '>');
+	            $('img').css({ "visibility": "hidden" });
 	        }
 	    } catch (err) {
 	        _didIteratorError = true;
