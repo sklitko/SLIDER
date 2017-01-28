@@ -66,7 +66,7 @@ var bundle =
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "140dcec38bcee59dfb46"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e892335f73cd7d5903b1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -603,7 +603,7 @@ var bundle =
 	//import '../sass/main.scss';
 
 	var slider = new _Slider2.default({
-	    type: "fadeIn", //"slide" или "fadeIn",
+	    type: "slide", //"slide" или "fadeIn",
 	    speed: 5000,
 	    delay: 2000,
 	    images: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg']
@@ -700,7 +700,7 @@ var bundle =
 	    var time = duration * 1000 + interval;
 	    var timerId = setTimeout(function slide() {
 	        var $wrap = $('.wrap');
-	        var slidersAmount = wrap.children().length;
+	        var slidersAmount = $wrap.children().length;
 	        $($wrap.children()[i]).removeClass().addClass('animated').addClass('fadeOutLeft').css({
 	            '-webkit-animation-duration': duration + 's',
 	            'visibility': 'visible'

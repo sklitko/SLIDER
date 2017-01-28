@@ -9,7 +9,7 @@ window.jQuery = jQuery;
 
 let slider = new Slider(
     {
-        type: "fadeIn", //"slide" или "fadeIn",
+        type: "slide", //"slide" или "fadeIn",
         speed: 5000,
         delay: 2000,
         images: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg']

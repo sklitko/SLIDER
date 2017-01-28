@@ -56,7 +56,7 @@ Slider.prototype.slide = function (interval, duration) {
     let time = duration * 1000 + interval;
     let timerId = setTimeout(function slide() {
         let $wrap = $('.wrap');
-        let slidersAmount = wrap.children().length;
+        let slidersAmount = $wrap.children().length;
         $($wrap.children()[i]).removeClass().addClass('animated').addClass('fadeOutLeft').css({
             '-webkit-animation-duration': duration + 's',
             'visibility': 'visible'
